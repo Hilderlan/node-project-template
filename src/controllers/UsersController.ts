@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
 
 import CreateUserService from '../services/CreateUserService';
 
@@ -15,7 +16,7 @@ class UsersControlerr {
         password,
       });
 
-      return response.json(user);
+      return response.json(classToClass(user));
     } catch (error) {
       return response.status(400).json({ error: error.message });
     }
